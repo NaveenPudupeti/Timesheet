@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Timesheets</title>
+</head>
+<body>
+    <h1>Timesheet List</h1>
+    <a href="/timesheets/new">Add New Timesheet</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Employee Name</th>
+                <th>Date</th>
+                <th>Hours Worked</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="timesheet : ${timesheets}">
+                <td th:text="${timesheet.employeeName}"></td>
+                <td th:text="${timesheet.date}"></td>
+                <td th:text="${timesheet.hoursWorked}"></td>
+                <td th:text="${timesheet.description}"></td>
+                <td>
+                    <a th:href="@{/timesheets/edit/{id}(id=${timesheet.id})}">Edit</a> |
+                    <a th:href="@{/timesheets/delete/{id}(id=${timesheet.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

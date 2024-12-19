@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Timesheet Form</title>
+</head>
+<body>
+    <h1>Timesheet Form</h1>
+    <form action="#" th:action="@{${timesheet.id != null} ? '/timesheets/update/' + ${timesheet.id} : '/timesheets'}" th:object="${timesheet}" method="post">
+        <label for="employeeName">Employee Name:</label>
+        <input type="text" id="employeeName" th:field="*{employeeName}" required /><br/>
+
+        <label for="hoursWorked">Hours Worked:</label>
+        <input type="number" id="hoursWorked" th:field="*{hoursWorked}" required /><br/>
+
+        <label for="description">Description:</label>
+        <textarea id="description" th:field="*{description}"></textarea><br/>
+
+        <button type="submit">Save</button>
+    </form>
+    <br/>
+    <a href="/timesheets">Back to Timesheet List</a>
+</body>
+</html>
